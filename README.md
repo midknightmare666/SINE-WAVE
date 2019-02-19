@@ -1,2 +1,3 @@
 # SINE-WAVE
-sine wave made with threee.js
+sine wave made with three.js
+https://threejs.org/

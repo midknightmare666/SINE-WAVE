@@ -46,7 +46,7 @@ document.body.appendChild(renderer.domElement);
     /* size = size of wave
        magnitude = magnitude of wave 
     */ 
-    let size = 4.0;
+    let size = 3.0;
     let magnitude = 5;
 
     v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;

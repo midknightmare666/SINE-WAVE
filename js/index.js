@@ -38,24 +38,57 @@ document.body.appendChild(renderer.domElement);
 let chngMag = document.getElementById("chngMag");
 let setMagField = document.getElementById("setMagField");
 let setMag = document.getElementById("setMag");
+let chngSize = document.getElementById("chngSize");
+let setSizeField = document.getElementById("setSizeField");
+let setSize = document.getElementById("setSize");
 /**/
+let size = 3.0;
 let magnitude = 3;
 
 setMag.value = magnitude;
 setMag.setAttribute("placeholder", magnitude);
+setSize.value = size;
+setSize.setAttribute("placeholder", size);
 
 function changeMagnitude(){
   if(!isNaN(setMag.value)){
     magnitude = setMag.value;
     setMag.setAttribute("placeholder", magnitude);
-    setMag.value = "";
-  } else {
+  } else if(isNaN(setMag.value)) {
     setMagField.setAttribute("class", "field error")
     setMag.setAttribute("placeholder", "Input must be an integer");
-    setMag.value = "";
+  } else if(setMag.value === "" || setMag.value === null){
+    magnitude = 3;
+    setMag.setAttribute("placeholder", magnitude);
+    setMag.value = 3;
+  }
+}
+function changeSize(){
+  if(!isNaN(setSize.value)){
+    size = setSize.value;
+    setSize.setAttribute("placeholder", size);
+  } else if(isNaN(setSize.value)) {
+    setSizeField.setAttribute("class", "field error");
+    setSize.setAttribute("placeholder", "Input must be an integer");
+  } else if(setSize.value === "" || setSize.value === null) {
+    size = 3;
+    setSize.setAttribute("placeholder", size);
+    setSize.value = 3;
+  }
+}
+function SetValue(){
+    chngMag.click();
+    chngSize.click();
+}
+function keyUp(key){
+  if(key.keyCode === 13){
+    key.preventDefault();
+    SetValue();
   }
 }
 chngMag.onclick = changeMagnitude;
+chngSize.onclick = changeSize;
+document.onkeyup = keyUp;
 
 (function drawFrame(ts){
   let center = new THREE.Vector2(0,0);
@@ -66,11 +99,7 @@ chngMag.onclick = changeMagnitude;
   for (let i = 0; i < vLength; i++) {
     let v = plane.geometry.vertices[i];
     let dist = new THREE.Vector2(v.x, v.y).sub(center);
-    /* size = size of wave
-       magnitude = magnitude of wave 
-    */ 
-    let size = 3.0;
-
+    
     v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
   }
   

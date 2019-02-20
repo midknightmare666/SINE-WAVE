@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <title>SINE WAVE CHECK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -12,15 +12,24 @@
     <!--Input + Button-->
     <div class="center floated">
       <div class="ui container">
-          <form class="ui form">
+        <div class="ui form">
+          <div class="equal width fields">
             <div class="field" id="setMagField">
+              <label style="text-align: center;color: white;">Magnitude</label>
               <input type="text" name="Magnitude" placeholder="Change Magnitude" style="text-align:center;" id="setMag">
             </div>
-            <div class="ui bottom attached inverted basic button" id="chngMag">Change Magnitude</div>
-          </form>
+            <div class="field" id="setSizeField">
+              <label style="text-align: center;color: white;">Size</label>
+              <input type="text" name="Size" placeholder="Change Size" style="text-align:center;" id="setSize">
+            </div>
+          </div>
+          <div class="two ui buttons">
+            <div class="ui inverted basic button" id="chngMag">Change Magnitude</div>
+            <div class="ui inverted basic button" id="chngSize">Change Size</div>
+          </div>
+        </div>
       </div>
-  </div>
-
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r69/three.min.js'></script>

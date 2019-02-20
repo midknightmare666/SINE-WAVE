@@ -99,10 +99,7 @@ document.onkeyup = keyUp;
   for (let i = 0; i < vLength; i++) {
     let v = plane.geometry.vertices[i];
     let dist = new THREE.Vector2(v.x, v.y).sub(center);
-    /* size = size of wave
-       magnitude = magnitude of wave 
-    */ 
-
+    
     v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
   }
   

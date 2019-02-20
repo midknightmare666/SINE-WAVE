@@ -34,6 +34,29 @@ camera.lookAt(scene.position);
 
 document.body.appendChild(renderer.domElement);
 
+/*INPUT + BUTTON*/
+let chngMag = document.getElementById("chngMag");
+let setMagField = document.getElementById("setMagField");
+let setMag = document.getElementById("setMag");
+/**/
+let magnitude = 3;
+
+setMag.value = magnitude;
+setMag.setAttribute("placeholder", magnitude);
+
+function changeMagnitude(){
+  if(!isNaN(setMag.value)){
+    magnitude = setMag.value;
+    setMag.setAttribute("placeholder", magnitude);
+    setMag.value = "";
+  } else {
+    setMagField.setAttribute("class", "field error")
+    setMag.setAttribute("placeholder", "Input must be an integer");
+    setMag.value = "";
+  }
+}
+chngMag.onclick = changeMagnitude;
+
 (function drawFrame(ts){
   let center = new THREE.Vector2(0,0);
   window.requestAnimationFrame(drawFrame);
@@ -47,7 +70,6 @@ document.body.appendChild(renderer.domElement);
        magnitude = magnitude of wave 
     */ 
     let size = 3.0;
-    let magnitude = 5;
 
     v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
   }
